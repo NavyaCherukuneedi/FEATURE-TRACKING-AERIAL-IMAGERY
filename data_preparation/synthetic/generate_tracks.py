@@ -23,7 +23,7 @@ QUALITY_LEVEL = 0.3
 BLOCK_SIZE = 25
 K = 0.15
 USE_HARRIS_DETECTOR = False
-OUTPUT_DIR = Path(r"C:\Users\abhil\.5DLProject\deep_ev_tracker\mf_dataset_extra")
+OUTPUT_DIR = Path(r"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\mf_dataset_extra")
 TRACK_NAME = "shitomasi_custom_v5"
 
 # Filtering
