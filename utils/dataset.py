@@ -10,7 +10,8 @@ from typing import Iterator, Sequence
 
 import cv2
 import yaml
-
+import sys
+sys.path.append(r"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY")
 # Visualization for Debugging
 from matplotlib import pyplot as plt
 from pandas import read_csv
@@ -235,7 +236,7 @@ class TrackDataset(Dataset):
         get_event_paths_fn,
         augment=False,
         patch_size=31,
-        track_name="shitomasi_custom",
+        track_name="shitomasi_custom_v5",
         representation="time_surfaces_v2_5",
     ):
         super(TrackDataset, self).__init__()
@@ -276,7 +277,7 @@ class MFDataModule(LightningDataModule):
         augment=False,
         n_train=20000,
         n_val=2000,
-        track_name="shitomasi_custom",
+        track_name="shitomasi_custom_v5",
         representation="time_surfaces_v2_1",
         mixed_dt=False,
         **kwargs,
@@ -327,7 +328,7 @@ class MFDataModule(LightningDataModule):
             track_tuples_array = track_tuples_array[rand_perm, :, :].reshape(
                 (n_tracks // 64) * 64, 2
             )
-            track_tuples_array[:, 1] = track_tuples_array[:, 1].astype(np.int)
+            track_tuples_array[:, 1] = track_tuples_array[:, 1].astype(int)
             track_tuples = []
             for i in range(track_tuples_array.shape[0]):
                 track_tuples.append(
@@ -388,7 +389,7 @@ class MFDataModule(LightningDataModule):
         return [
             event_p
             for event_p in event_files
-            if 400000 <= int(os.path.split(event_p)[1].replace(".h5", "")) <= 900000
+            if 400000 <= float(os.path.split(event_p)[1].replace(".h5", "")) <= 900000
         ]
 
     def setup(self, stage=None):
@@ -411,7 +412,7 @@ class MFDataModule(LightningDataModule):
             if self.mixed_dt
             else partial(MFDataModule.get_event_paths, dt=self.dt),
             patch_size=self.patch_size,
-            track_name="shitomasi_custom",
+            track_name="shitomasi_custom_v5",
             representation=self.representation,
             augment=False,
         )
@@ -747,7 +748,7 @@ class Multiflow(SequenceDataset):
 class EDSSubseq(SequenceDataset):
     # ToDo: Add to config file
     pose_r = 3
-    pose_mode = False
+    pose_mode = True
 
     def __init__(
         self,

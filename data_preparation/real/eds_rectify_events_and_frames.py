@@ -3,7 +3,7 @@ import glob
 import os
 import sys
 from os.path import join
-
+sys.path.append(r"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY")
 import cv2
 import h5py
 import hdf5plugin

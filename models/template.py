@@ -155,6 +155,8 @@ class Template(LightningModule):
         else:
             attn_mask = torch.zeros([nt, nt], device=self.device)
             for i_src in range(nt):
+                print(f"Index i_src: {i_src}, batch_dataloaders length: {len(batch_dataloaders)}, nt:{nt}")
+
                 src_path = batch_dataloaders[i_src].track_path.split("/")[-3]
                 for i_target in range(nt):
                     attn_mask[i_src, i_target] = (
@@ -700,6 +702,7 @@ class Template(LightningModule):
             # L2 error cumsum
             with plt.style.context("ggplot"):
                 fig = plt.figure()
+                self.epe_l2_hist = np.array(self.epe_l2_hist, dtype=float)
                 x, counts = np.unique(self.epe_l2_hist, return_counts=True)
                 y = np.cumsum(counts) / np.sum(counts)
                 ax = fig.add_subplot()
@@ -711,9 +714,9 @@ class Template(LightningModule):
                 )
                 plt.close("all")
 
-            self.logger.experiment.add_histogram(
-                "EPE_hist/val", np.array(self.epe_l2_hist), self.global_step
-            )
+            # self.logger.experiment.add_histogram(
+            #     "EPE_hist/val", np.array(self.epe_l2_hist), self.global_step
+            # )
 
             self.log("EPE_median/val", np.median(self.epe_l2_hist))
             self.log("TE_median/val", np.median(self.track_error_hist))

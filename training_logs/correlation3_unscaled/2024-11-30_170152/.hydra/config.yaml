@@ -1,21 +1,19 @@
-hydra:
-  run:
-    dir: training_logs/${model.name}/${now:%Y-%m-%d_%H%M%S}
-
+model:
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.0001
+  name: correlation3_unscaled
+  _target_: models.correlation3_unscaled.TrackerNetC
+  patch_size: 31
+  feature_dim: 384
 gt_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\gt_tracks
-running_locally: True
-
-
+running_locally: true
 weights_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\pretrained_weights\pretrained_weights
 track_name: shitomasi_custom
 representation: time_surfaces_v2_5
 patch_size: 31
-visualize: False
+visualize: false
 dt_track_vis: 0.2
-
-# Composing nested config with default
-defaults:
-  - model: correlation3_unscaled
-# Pytorch lightning trainer's argument
 trainer:
-  cpus: [0]
+  cpus:
+  - 0

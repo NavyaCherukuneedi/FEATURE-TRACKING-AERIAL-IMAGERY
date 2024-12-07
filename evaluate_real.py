@@ -5,7 +5,7 @@ from pathlib import Path
 
 import hydra
 import imageio
-import IPython
+#import IPython
 import numpy as np
 import pytorch_lightning as pl
 import torch
@@ -117,7 +117,7 @@ def track(cfg):
     # Configure model
     model = hydra.utils.instantiate(cfg.model, _recursive_=False)
 
-    state_dict = torch.load(cfg.weights_path, map_location="cuda:0")["state_dict"]
+    state_dict = torch.load(cfg.weights_path, map_location=torch.device('cpu'))["state_dict"]
     model.load_state_dict(state_dict)
     if torch.cuda.is_available():
         model = model.cuda()

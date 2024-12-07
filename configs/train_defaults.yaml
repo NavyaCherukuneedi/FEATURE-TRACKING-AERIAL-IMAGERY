@@ -1,10 +1,10 @@
 hydra:
   run:
-    dir: <path>/${data.name}/${model.name}/${experiment}/${now:%Y-%m-%d_%H%M%S}
+    dir: correlation3_unscaled/${data.name}/${model.name}/${experiment}/${now:%Y-%m-%d_%H%M%S}
 
 # Composing nested config with default
 experiment: open_source
-track_name: shitomasi_custom
+track_name: shitomasi_custom_v5
 
 representation: time_surfaces_v2_5
 patch_size: 31

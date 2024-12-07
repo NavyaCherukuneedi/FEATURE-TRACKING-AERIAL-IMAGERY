@@ -1,7 +1,8 @@
 import multiprocessing
 import os
 from pathlib import Path
-
+import sys
+sys.path.append(r"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY")
 import cv2
 import fire
 import h5py

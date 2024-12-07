@@ -1,12 +1,14 @@
 import logging
 import os
-
+import sys
+sys.path.append(r"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY")
 import hydra
 import pytorch_lightning as pl
 import torch
 
 from utils.callbacks import IncreaseSequenceLengthCallback
 from utils.utils import *
+from utils.dataset import *
 
 logger = logging.getLogger(__name__)
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
@@ -60,7 +62,7 @@ def train(cfg):
     trainer = pl.Trainer(
         **OmegaConf.to_container(cfg.trainer),
         devices=[0],
-        accelerator="gpu",
+        accelerator="cpu",
         callbacks=callbacks,
         logger=training_logger
     )

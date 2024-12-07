@@ -2,7 +2,8 @@ import os
 from glob import glob
 from pathlib import Path
 from shutil import copy
-
+import sys
+sys.path.append(r"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY")
 import fire
 import h5py
 import hdf5plugin
@@ -37,9 +38,9 @@ def generate_subseq(seq_name, start_idx, end_idx, dt):
     """
 
     # Pathing
-    input_dir = Path(f"<path>/{seq_name}")
+    input_dir = Path(f"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\eds_subseq/{seq_name}")
     output_dir = Path(
-        f"<path>/{seq_name}_{start_idx}_{end_idx}"
+        f"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\eds_subseq_extra/{seq_name}_{start_idx}_{end_idx}"
     )
     if not output_dir.exists():
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -59,7 +60,7 @@ def generate_subseq(seq_name, start_idx, end_idx, dt):
     # Copy images
     output_image_dir = output_dir / "images_corrected"
     if not output_image_dir.exists():
-        output_image_dir.mkdir()
+        os.makedirs(output_image_dir)
 
     for idx in tqdm(range(start_idx, end_idx), desc="Copying images..."):
         copy(
@@ -136,19 +137,19 @@ def generate_subseq(seq_name, start_idx, end_idx, dt):
                     plt.imshow((time_surface[:, :, i] * 255).astype(np.uint8))
                     plt.show()
 
-        # Storing events in one cropped file
-        first_t, last_t = image_timestamps[0], image_timestamps[-1]
-        event_idx = np.searchsorted(time, np.asarray([first_t, last_t]), side="left")
-        output_path = output_ts_dir / "events.h5"
-        with h5py.File(output_path, "w") as h5f_out:
-            h5f_out.create_dataset(
-                "x", data=h5f["x"][event_idx[0] : event_idx[1]].astype(np.uint16)
-            )
-            h5f_out.create_dataset(
-                "y", data=h5f["y"][event_idx[0] : event_idx[1]].astype(np.uint16)
-            )
-            h5f_out.create_dataset("p", data=h5f["p"][event_idx[0] : event_idx[1]])
-            h5f_out.create_dataset("t", data=time[event_idx[0] : event_idx[1]])
+            # Storing events in one cropped file
+            first_t, last_t = image_timestamps[0], image_timestamps[-1]
+            event_idx = np.searchsorted(time, np.asarray([first_t, last_t]), side="left")
+            output_path = output_ts_dir / "events.h5"
+            with h5py.File(output_path, "w") as h5f_out:
+                h5f_out.create_dataset(
+                    "x", data=h5f["x"][event_idx[0] : event_idx[1]].astype(np.uint16)
+                )
+                h5f_out.create_dataset(
+                    "y", data=h5f["y"][event_idx[0] : event_idx[1]].astype(np.uint16)
+                )
+                h5f_out.create_dataset("p", data=h5f["p"][event_idx[0] : event_idx[1]])
+                h5f_out.create_dataset("t", data=time[event_idx[0] : event_idx[1]])
 
 
 if __name__ == "__main__":

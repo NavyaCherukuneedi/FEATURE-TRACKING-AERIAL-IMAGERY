@@ -1,6 +1,6 @@
 # @package _global_
 
-checkpoint_path: <path>
+checkpoint_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\pretrained_weights\pretrained_weights\weights_finetuned_eds.ckpt
 init_unrolls: 8
 max_unrolls: 8
 unroll_factor: 8
