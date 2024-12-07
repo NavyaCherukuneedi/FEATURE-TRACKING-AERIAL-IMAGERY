@@ -1,0 +1,7 @@
+# @package _global_
+
+checkpoint_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\pretrained_weights\pretrained_weights\weights_mf.ckpt
+init_unrolls: 4
+max_unrolls: 23
+unroll_factor: 4
+unroll_schedule: [80000, 120000, 140000]
