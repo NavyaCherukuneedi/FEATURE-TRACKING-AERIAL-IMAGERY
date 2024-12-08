@@ -1,0 +1,22 @@
+[2024-12-08 15:46:43,315][__main__][INFO] - 
+hydra:
+  run:
+    dir: training_logs/${model.name}/${now:%Y-%m-%d_%H%M%S}
+
+gt_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\gt_tracks
+running_locally: True
+
+
+weights_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\pretrained_weights\weights_finetuned_eds.ckpt
+track_name: shitomasi_custom
+representation: time_surfaces_v2_5
+patch_size: 31
+visualize: False
+dt_track_vis: 0.2
+
+# Composing nested config with default
+defaults:
+  - model: correlation3_unscaled
+# Pytorch lightning trainer's argument
+trainer:
+  cpus: [0]

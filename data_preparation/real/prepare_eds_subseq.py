@@ -36,12 +36,11 @@ def generate_subseq(seq_name, start_idx, end_idx, dt):
     :param end_idx: Terminal image index (non-inclusive)
     :param dt: time delete used for time surface generation
     """
-
+    start_idx = int(start_idx)
+    end_idx = int(end_idx)
     # Pathing
-    input_dir = Path(f"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\eds_subseq/{seq_name}")
-    output_dir = Path(
-        f"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\eds_subseq_extra/{seq_name}_{start_idx}_{end_idx}"
-    )
+    input_dir = Path(r"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY") / seq_name
+    output_dir = Path(r"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY") / f"{seq_name}_{start_idx}_{end_idx}"
     if not output_dir.exists():
         output_dir.mkdir(parents=True, exist_ok=True)
 
