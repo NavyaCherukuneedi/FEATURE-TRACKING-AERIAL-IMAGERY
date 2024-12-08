@@ -1,0 +1,22 @@
+[2024-12-08 02:21:44,090][__main__][INFO] - 
+model:
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.0001
+  name: correlation3_unscaled
+  _target_: models.correlation3_unscaled.TrackerNetC
+  patch_size: 31
+  feature_dim: 384
+  representation: time_surfaces_v2_5
+gt_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\gt_tracks
+running_locally: true
+weights_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\pretrained_weights\pretrained_weights
+track_name: shitomasi_custom
+representation: time_surfaces_v2_5
+patch_size: 31
+visualize: false
+dt_track_vis: 0.2
+trainer:
+  cpus:
+  - 0
+

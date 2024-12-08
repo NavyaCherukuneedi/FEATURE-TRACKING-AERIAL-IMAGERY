@@ -6,7 +6,7 @@ gt_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\gt_tracks
 running_locally: True
 
 
-weights_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\pretrained_weights\pretrained_weights
+weights_path: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\pretrained_weights\weights_finetuned_eds.ckpt
 track_name: shitomasi_custom
 representation: time_surfaces_v2_5
 patch_size: 31
