@@ -1,20 +1,18 @@
 import logging
 import os
 import sys
-sys.path.append(r"C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY")
 import hydra
 import pytorch_lightning as pl
 import torch
-
+from utils.dataset import *
 from utils.callbacks import IncreaseSequenceLengthCallback
 from utils.utils import *
-from utils.dataset import *
 
 logger = logging.getLogger(__name__)
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 torch.set_num_threads(1)
 torch.backends.cudnn.benchmark = True
-
+sys.path.append("D:\projects\FEATURE-TRACKING-AERIAL-IMAGERY")
 
 @hydra.main(config_path="configs", config_name="train_defaults")
 def train(cfg):
@@ -62,7 +60,7 @@ def train(cfg):
     trainer = pl.Trainer(
         **OmegaConf.to_container(cfg.trainer),
         devices=[0],
-        accelerator="cpu",
+        accelerator="gpu",
         callbacks=callbacks,
         logger=training_logger
     )
