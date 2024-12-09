@@ -1,6 +1,6 @@
 hydra:
   run:
-    dir: correlation3_unscaled/${data.name}/${model.name}/${experiment}/${now:%Y-%m-%d_%H%M%S}
+    dir: outputs/${data.name}/${model.name}/${experiment}/${now:%Y-%m-%d_%H%M%S}
 
 # Composing nested config with default
 experiment: open_source
@@ -15,9 +15,9 @@ logging: True
 
 # Do not forget to set the learning rate for supervised or for pose finetuning in configs/optim/adam.yaml
 defaults:
-  - data: pose_eds # [mf, pose_eds, pose_ec]
+  - data: mf # [mf, pose_eds, pose_ec]
   - model: correlation3_unscaled
-  - training: pose_finetuning_train_eds # [supervised_train, pose_finetuning_train_ec, pose_finetuning_train_eds]
+  - training: supervised_train # [supervised_train, pose_finetuning_train_ec, pose_finetuning_train_eds]
 
 # Pytorch lightning trainer's argument
 trainer:

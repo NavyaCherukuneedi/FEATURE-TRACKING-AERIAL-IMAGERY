@@ -10,3 +10,5 @@ mf_dataset_extra/
 ec_subseq/
 eds_subseq/
 pretrained_weights/
+aligned_timestamps_data_dl_town01_day/
+env/

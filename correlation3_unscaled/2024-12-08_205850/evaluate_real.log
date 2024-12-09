@@ -1,0 +1,30 @@
+[2024-12-08 20:58:50,234][__main__][INFO] - 
+model:
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.0001
+  name: correlation3_unscaled
+  _target_: models.correlation3_unscaled.TrackerNetC
+  patch_size: 31
+  feature_dim: 384
+  representation: time_surfaces_v2_5
+gt_path: D:\projects\FEATURE-TRACKING-AERIAL-IMAGERY\GT_Tracks
+running_locally: false
+weights_path: D:\projects\FEATURE-TRACKING-AERIAL-IMAGERY\pretrained_weights\weights_finetuned_eds.ckpt
+track_name: shitomasi_custom_v5
+representation: time_surfaces_v2_5
+patch_size: 31
+visualize: true
+dt_track_vis: 0.2
+trainer:
+  gpus:
+  - 0
+
+[2024-12-08 20:59:24,986][__main__][INFO] - === DATASET: aligned_timestamps_data_dl_town01_day_5_100 ===
+[2024-12-08 20:59:24,986][__main__][INFO] - Latency: 8.125314474105835 s
+[2024-12-08 20:59:24,986][__main__][INFO] - 
++-------------------+
+|   Inference Time  |
++-------------------+
+| 8.125314474105835 |
++-------------------+

@@ -2,7 +2,7 @@ name: pose
 
 _target_: utils.dataset.PoseDataModule
 
-root_dir: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\eds_subseq
+root_dir: ./
 dataset_type: EDS
 n_frames_skip: 8
 n_event_representations_per_frame: 3

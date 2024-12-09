@@ -1,8 +1,8 @@
 name: mf
 
 _target_: utils.dataset.MFDataModule
-data_dir: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\mf_dataset
-extra_dir: C:\Users\abhil\.6DLprojectnew\FEATURE-TRACKING-AERIAL-IMAGERY\mf_dataset_extra
+data_dir: aligned_timestamps_data_dl_town01_day
+extra_dir: aligned_timestamps_data_dl_town01_day_extra
 dt: 0.0200
 num_workers: 4
 

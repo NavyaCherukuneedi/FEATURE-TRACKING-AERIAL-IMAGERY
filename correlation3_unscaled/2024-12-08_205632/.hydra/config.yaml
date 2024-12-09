@@ -1,0 +1,19 @@
+model:
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.0001
+  name: correlation3_unscaled
+  _target_: models.correlation3_unscaled.TrackerNetC
+  patch_size: 31
+  feature_dim: 384
+gt_path: D:\projects\FEATURE-TRACKING-AERIAL-IMAGERY\GT_Tracks
+running_locally: false
+weights_path: D:\projects\FEATURE-TRACKING-AERIAL-IMAGERY\pretrained_weights\weights_finetuned_ec.ckpt
+track_name: shitomasi_custom_v5
+representation: time_surfaces_v2_5
+patch_size: 31
+visualize: true
+dt_track_vis: 0.2
+trainer:
+  gpus:
+  - 0
